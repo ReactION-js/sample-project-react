@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Timer from './Timer';
-import Event from './Event';
+import AddComponent from './AddComponent';
 
 class App extends Component {
   constructor(props){
@@ -10,15 +10,15 @@ class App extends Component {
       seconds: 0,
       shouldStartTimer: false,
       buttonLabel: 'Off',
-      eventsArray: [],
+      componentsArray: [],
 
     }
     this.shouldStartTimer = this.shouldStartTimer.bind(this);
     this.buttonLabel = this.buttonLabel.bind(this);
     this.handleSeconds = this.handleSeconds.bind(this);
     this.handleInterval = null;
-    this.addEvent = this.addEvent.bind(this);
-    this.removeEvent = this.removeEvent.bind(this);
+    this.addComponent = this.addComponent.bind(this);
+    this.removeComponent = this.removeComponent.bind(this);
 
   }
 
@@ -57,19 +57,18 @@ class App extends Component {
       }
   }
 
-  addEvent(val) {
+  addComponent(val) {
     this.setState({
-      eventsArray: [...this.state.eventsArray, val]
+      componentsArray: [...this.state.componentsArray, val]
     })
-    // console.log(this.state.eventsArray)
   }
 
-  removeEvent(id) {
-    console.log(this.state.eventsArray)
-    const arr = this.state.eventsArray;
+  removeComponent(id) {
+    console.log(this.state.componentsArray)
+    const arr = this.state.componentsArray;
     const newArray = arr.filter((el, idx) => idx !== id);
     this.setState({
-      eventsArray: newArray
+      componentsArray: newArray
     })
   }
 
@@ -78,10 +77,9 @@ class App extends Component {
     return (
 
       <div className="App">
+        Sample React App for ProjectX!
         <Timer seconds={this.state.seconds} shouldStartTimer={this.shouldStartTimer} buttonLabel={this.state.buttonLabel} />
-        <Event events={this.state.eventsArray} addEvent={this.addEvent} removeEvent={this.removeEvent}/>
-
-
+        <AddComponent events={this.state.componentsArray} addComponent={this.addComponent} removeComponent={this.removeComponent}/>
       </div>
     );
   }

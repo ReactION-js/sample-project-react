@@ -1,0 +1,14 @@
+.AddComponent {
+  border: 2px green solid;
+  background-color: lightsalmon;
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.componentWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 800px;
+}
