@@ -10,7 +10,6 @@ class TimerInput extends Component {
       <div>
         TIMER<br/>
         Seconds: {this.props.seconds}
-
       </div>
     )
   }
