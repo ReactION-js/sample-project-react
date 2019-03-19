@@ -21,7 +21,6 @@ class App extends Component {
     this.addComponent = this.addComponent.bind(this);
     this.removeComponent = this.removeComponent.bind(this);
     this.addToTotal = this.addToTotal.bind(this);
-    this.subtractFromTotal = this.subtractFromTotal.bind(this);
   }
 
   shouldStartTimer(e) {
@@ -59,26 +58,28 @@ class App extends Component {
 
   addComponent(val) {
     this.setState({
-      componentsArray: [...this.state.componentsArray, val]
+      componentsArray: [...this.state.componentsArray, { name: val, num: 0 }]
     })
   }
 
-  removeComponent(slot) {
-    const arr = this.state.componentsArray;
-    const newArray = arr.filter((el, idx) => idx !== slot);
+  removeComponent(slot, componentSum) {
+    const curComps = this.state.componentsArray;
+    const newArray = curComps.filter((el, idx) => idx !== slot);
     this.setState({
+      totalSum: this.state.totalSum - componentSum,
       componentsArray: newArray
     })
   }
 
-  subtractFromTotal(val) {
-    this.setState({
-      totalSum: this.state.totalSum - val,
+  addToTotal(id) {
+    const curComps = this.state.componentsArray
+    curComps.forEach((el, index) => {
+      if (index === id) {
+        el.num += 1;
+      }
     })
-  }
-
-  addToTotal() {
     this.setState({
+      componentsArray: curComps,
       totalSum: this.state.totalSum + 1
     })
   }
@@ -90,7 +91,7 @@ class App extends Component {
         <img src={localImg} alt="Sample React App for ReactION"></img>
         <TotalSum totalSum={this.state.totalSum} />
         <Timer seconds={this.state.seconds} shouldStartTimer={this.shouldStartTimer} buttonLabel={this.state.buttonLabel} />
-        <AddComponent events={this.state.componentsArray} addComponent={this.addComponent} removeComponent={this.removeComponent} addToTotal={this.addToTotal} subtractFromTotal={this.subtractFromTotal}/>
+        <AddComponent events={this.state.componentsArray} addComponent={this.addComponent} removeComponent={this.removeComponent} addToTotal={this.addToTotal} />
       </div>
     );
   }

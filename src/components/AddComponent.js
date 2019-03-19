@@ -27,7 +27,7 @@ class AddComponent extends Component {
 
   render() {
     const events = this.props.events;
-    const arr = events.map((el, id) => <EachComponent key={id} slot={id} text={el} removeComponent={this.props.removeComponent} addToTotal={this.props.addToTotal} subtractFromTotal={this.props.subtractFromTotal}/>)
+    const arr = events.map((el, id) => <EachComponent key={id} slot={id} text={el.name} componentSum={el.num} removeComponent={this.props.removeComponent} addToTotal={this.props.addToTotal} />);
     return (
       <div className="AddComponent">
         Click to add a component!<br/>
