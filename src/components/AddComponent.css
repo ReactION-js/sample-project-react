@@ -1,6 +1,6 @@
 .AddComponent {
-  border: 2px green solid;
-  background-color: lightsalmon;
+  border: 2px solid darkgray;
+  background-color: #E8E8E8;
   width: 800px;
   display: flex;
   flex-direction: column;
