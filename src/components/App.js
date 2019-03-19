@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import Timer from './Timer';
 import AddComponent from './AddComponent';
-
+import TotalSum from './TotalSum';
+import localImg from '../ReactION-logo.png';
 class App extends Component {
   constructor(props){
     super(props);
@@ -11,7 +12,7 @@ class App extends Component {
       shouldStartTimer: false,
       buttonLabel: 'Off',
       componentsArray: [],
-
+      totalSum: 0,
     }
     this.shouldStartTimer = this.shouldStartTimer.bind(this);
     this.buttonLabel = this.buttonLabel.bind(this);
@@ -19,7 +20,8 @@ class App extends Component {
     this.handleInterval = null;
     this.addComponent = this.addComponent.bind(this);
     this.removeComponent = this.removeComponent.bind(this);
-
+    this.addToTotal = this.addToTotal.bind(this);
+    this.subtractFromTotal = this.subtractFromTotal.bind(this);
   }
 
   shouldStartTimer(e) {
@@ -30,8 +32,6 @@ class App extends Component {
     this.buttonLabel();
     this.handleSeconds();
   }
-
-
 
   buttonLabel() {
     if (this.state.shouldStartTimer) {
@@ -63,23 +63,34 @@ class App extends Component {
     })
   }
 
-  removeComponent(id) {
-    console.log(this.state.componentsArray)
+  removeComponent(slot) {
     const arr = this.state.componentsArray;
-    const newArray = arr.filter((el, idx) => idx !== id);
+    const newArray = arr.filter((el, idx) => idx !== slot);
     this.setState({
       componentsArray: newArray
     })
   }
 
+  subtractFromTotal(val) {
+    this.setState({
+      totalSum: this.state.totalSum - val,
+    })
+  }
+
+  addToTotal() {
+    this.setState({
+      totalSum: this.state.totalSum + 1
+    })
+  }
 
   render() {
     return (
 
       <div className="App">
-        Sample React App for ProjectX!
+        <img src={localImg} alt="Sample React App for ReactION"></img>
+        <TotalSum totalSum={this.state.totalSum} />
         <Timer seconds={this.state.seconds} shouldStartTimer={this.shouldStartTimer} buttonLabel={this.state.buttonLabel} />
-        <AddComponent events={this.state.componentsArray} addComponent={this.addComponent} removeComponent={this.removeComponent}/>
+        <AddComponent events={this.state.componentsArray} addComponent={this.addComponent} removeComponent={this.removeComponent} addToTotal={this.addToTotal} subtractFromTotal={this.subtractFromTotal}/>
       </div>
     );
   }

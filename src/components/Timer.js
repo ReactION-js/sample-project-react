@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TimerInput from './TimerInput';
 import StartButton from './StartButton';
+import './Timer.css';
 
 class Timer extends Component {
   constructor(props){
@@ -9,7 +10,7 @@ class Timer extends Component {
 
   render() {
     return (
-      <div>
+      <div className="Timer">
         <TimerInput seconds={this.props.seconds} />
         <StartButton shouldStartTimer={this.props.shouldStartTimer} buttonLabel={this.props.buttonLabel} />
       </div>
