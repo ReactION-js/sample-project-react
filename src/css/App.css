@@ -10,8 +10,9 @@
   height: 10em;
 }
 
-.TotalSum {
-  padding: 1em;
-  margin: 2em;
-  font: 15px arial;
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 1em;
 }

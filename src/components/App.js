@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import '../css/App.css';
 import AddComponent from './AddComponent';
 import TotalSum from './TotalSum';
 import localImg from '../ReactION-logo.png';
@@ -46,11 +46,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <img src={localImg} alt="Sample React App for ReactION"></img>
-        <TotalSum className="TotalSum" totalSum={this.state.totalSum} />
-        <AddComponent className="AppComponent" events={this.state.componentsArray} addComponent={this.addComponent} removeComponent={this.removeComponent} addToTotal={this.addToTotal} subtractFromTotal={this.subtractFromTotal}/>
+        <div className="header">
+          <img src={localImg} alt="Sample React App for ReactION"></img>
+          <TotalSum totalSum={this.state.totalSum} />
+        </div>
+        <AddComponent events={this.state.componentsArray} addComponent={this.addComponent} removeComponent={this.removeComponent} addToTotal={this.addToTotal} subtractFromTotal={this.subtractFromTotal }/>
       </div>
-    );
+    )
   }
 }
 

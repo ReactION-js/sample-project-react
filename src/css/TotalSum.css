@@ -1,4 +1,7 @@
 .TotalSum {
   border: 1px solid grey;
   background-color: #E8E8E8;
+  padding: 1em;
+  margin: 2em;
+  font: 18px arial;
 }

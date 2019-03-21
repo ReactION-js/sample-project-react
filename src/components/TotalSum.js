@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import './TotalSum.css';
+import '../css/TotalSum.css';
 
 class TotalSum extends Component {
   render() {
     return (
       <div className="TotalSum">
-        Total Sum: {this.props.totalSum}
+        <p>Total Sum: {this.props.totalSum}</p>
       </div>
     )
   }
