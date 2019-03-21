@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import EachComponent from './EachComponent';
-import './AddComponent.css';
+import '../css/AddComponent.css';
 
 class AddComponent extends Component {
   constructor(props) {
@@ -8,8 +8,9 @@ class AddComponent extends Component {
     this.state = {
       val: ''
     }
-    this.handleInput=this.handleInput.bind(this);
-    this.handleSubmit=this.handleSubmit.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   handleInput(e) {
@@ -18,11 +19,17 @@ class AddComponent extends Component {
     })
   }
 
-  handleSubmit(e) {
+  handleSubmit() {
     this.props.addComponent(this.state.val);
     this.setState({
       val: ''
     })
+  }
+
+  handleKeyPress(e) {
+    if (e.key === 'Enter') {
+      this.handleSubmit();
+    }
   }
 
   render() {
@@ -32,7 +39,7 @@ class AddComponent extends Component {
       <div className="AddComponent">
         <h3>Click to add a component!</h3>
           <div className="inputField">
-            <input onChange={this.handleInput} placeholder="component name" value={this.state.val} ref={input => input && input.focus()}></input>
+            <input onChange={this.handleInput} onKeyPress={this.handleKeyPress} placeholder="component name" value={this.state.val} ref={input => input && input.focus()}></input>
             <button onClick={this.handleSubmit}>Add Component</button>
           </div>
         <div className="componentWrapper">{arr}</div>
