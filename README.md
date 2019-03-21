@@ -1,4 +1,4 @@
-Feel free to fork and clone this repo, npm install, and test out with ReactION for VS Code!
+<b> Feel free to fork and clone this repo, npm install, and test out with ReactION for VS Code! </b>
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
