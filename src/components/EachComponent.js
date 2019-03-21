@@ -1,37 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './EachComponent.css';
 
-class EachComponent extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      componentSum: 0,
-    }
-    this.addSum = this.addSum.bind(this);
-    this.removeComponent = this.removeComponent.bind(this);
-  }
+const EachComponent = ({ slot, componentSum, text, removeComponent, addToTotal, subtractFromTotal }) => {
 
-  addSum() {
-    this.setState({
-      componentSum: this.state.componentSum + 1
-    })
-    this.props.addToTotal();
-  }
-
-  removeComponent() {
-    this.props.subtractFromTotal(this.state.componentSum);
-    this.props.removeComponent(this.props.slot);
-  }
-
-  render() {
-    return (
-      <div className="EachComponent">
-        <p>{this.props.text || "Component"}</p>
-        <button onClick={() => this.addSum() }>Total: {this.state.componentSum}</button>
-        <button onClick={() => this.removeComponent() }>Remove component</button>
-      </div>
-    )
-  }
+  return (
+    <div className="EachComponent">
+      <p>{text || "Component"}</p>
+      <button onClick={() => addToTotal(slot) }>Total: {componentSum}</button>
+      <button onClick={() => removeComponent(slot, componentSum) }>Remove component</button>
+    </div>
+  )
 }
 
 export default EachComponent;

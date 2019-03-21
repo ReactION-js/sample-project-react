@@ -9,3 +9,9 @@
 .App img {
   height: 10em;
 }
+
+.TotalSum {
+  padding: 1em;
+  margin: 2em;
+  font: 15px arial;
+}
